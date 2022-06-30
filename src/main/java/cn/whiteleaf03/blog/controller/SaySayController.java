@@ -5,6 +5,7 @@ import cn.whiteleaf03.blog.repository.SaySayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 @RequestMapping(value = "/saysay")
 public class SaySayController {
     @Autowired
-    SaySayRepository saySayRepository;
+    private SaySayRepository saySayRepository;
 
     @GetMapping(value = "/findAll")
     public List<SaySay> findAll() {
@@ -22,7 +23,7 @@ public class SaySayController {
 
     @PostMapping(value = "/add")
     public void add(SaySay saySay) {
-        saySay.setTime(new Date());
+        saySay.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
         saySayRepository.save(saySay);
     }
 }

@@ -18,9 +18,18 @@ public class Comment implements Serializable {
     private String message;
 
     @Column(nullable = false)
-    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
-    private Date time;
+    private String time;
 
     @Column(nullable = false)
     private Long uid;
+
+    public Comment() {
+
+    }
+
+    public Comment(String message, String time, Long uid) {
+        this.message = message;
+        this.time = time;
+        this.uid = uid;
+    }
 }

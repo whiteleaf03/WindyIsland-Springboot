@@ -17,5 +17,5 @@ public class SaySay implements Serializable {
     private String message;
 
     @Column(nullable = false)
-    private Date time;
+    private String time;
 }

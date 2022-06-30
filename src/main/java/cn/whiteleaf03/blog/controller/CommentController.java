@@ -18,6 +18,7 @@ public class CommentController {
     @Autowired
     private CommentRepository commentRepository;
 
+    @Autowired
     private UserRepository userRepository;
 
     @GetMapping(value = "/findAll")
@@ -32,11 +33,18 @@ public class CommentController {
     }
 
     @PostMapping(value = "/quickAdd")
-    public void quickAdd(String username, String useremail, String message) {
+    public String quickAdd(String username, String useremail, String message) {
+        String result;
         List<User> list = userRepository.findByUsernameAndUseremail(username, useremail);
+        if (list.isEmpty()) {
+            result = "用户不存在";
+            return result;
+        }
         for (User user : list) {
             Comment comment = new Comment(message, new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()), user.getUid());
             commentRepository.save(comment);
         }
+        result = "评论成功";
+        return result;
     }
 }

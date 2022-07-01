@@ -4,6 +4,7 @@ import lombok.Data;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -18,4 +19,11 @@ public class SaySay implements Serializable {
 
     @Column(nullable = false)
     private String time;
+
+    public SaySay() {}
+
+    public SaySay(String message) {
+        this.message = message;
+        this.time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
+    }
 }

@@ -1,10 +1,10 @@
 package cn.whiteleaf03.blog.entity;
 
 import lombok.Data;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 @Entity
@@ -20,16 +20,18 @@ public class Comment implements Serializable {
     @Column(nullable = false)
     private String time;
 
-    @Column(nullable = false)
-    private Long uid;
+    @Column(nullable = false, length = 16)
+    private String username;
 
-    public Comment() {
+    @Column(nullable = false, length = 64)
+    private String email;
 
-    }
+    public Comment() {}
 
-    public Comment(String message, String time, Long uid) {
+    public Comment(String username,String email,String message) {
+        this.username = username;
+        this.email = email;
         this.message = message;
-        this.time = time;
-        this.uid = uid;
+        this.time = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date());
     }
 }

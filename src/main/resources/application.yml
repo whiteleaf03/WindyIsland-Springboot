@@ -9,3 +9,15 @@ spring:
   jpa:
     hibernate:
       ddl-auto: update
+  mail:
+    # SMTP服务器地址
+    host: smtp.163.com
+    # SMTP端口
+    port: 465
+    # 邮箱用户名
+    username: WindyIslandBlog@163.com
+    # 邮箱授权码
+    password: QFZWVQFDAXLFQFFD
+    # 邮件编码
+    default-encoding: UTF-8
+    

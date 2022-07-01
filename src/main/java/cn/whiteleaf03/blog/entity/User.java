@@ -19,7 +19,7 @@ public class User implements Serializable {
     private String password;
 
     @Column(nullable = false, unique = true, length = 64)
-    private String useremail;
+    private String email;
 
     @Column(nullable = false, length = 1)
     private int level = 0;

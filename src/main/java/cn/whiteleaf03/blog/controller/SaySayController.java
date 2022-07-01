@@ -22,8 +22,7 @@ public class SaySayController {
     }
 
     @PostMapping(value = "/add")
-    public void add(SaySay saySay) {
-        saySay.setTime(new SimpleDateFormat("yyyy-MM-dd HH:mm:ss").format(new Date()));
-        saySayRepository.save(saySay);
+    public void add(String message) {
+        saySayRepository.save(new SaySay(message));
     }
 }

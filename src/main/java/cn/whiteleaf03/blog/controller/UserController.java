@@ -9,7 +9,7 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/user")
+@RequestMapping(value = "/api/user")
 public class UserController {
     @Autowired
     private UserRepository userRepository;
@@ -22,5 +22,15 @@ public class UserController {
     @PostMapping(value = "/add")
     public void addUser(User user) {
         userRepository.save(user);
+    }
+
+    @PostMapping(value = "/login")
+    public String userLogin(String username, String password) {
+        User user = userRepository.findUserByUsernameAndPassword(username, password);
+        if (user != null) {
+            return "登录成功";
+        } else {
+            return "账号名或密码错误";
+        }
     }
 }

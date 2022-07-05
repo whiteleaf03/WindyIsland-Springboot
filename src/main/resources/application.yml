@@ -20,4 +20,8 @@ spring:
     password: QFZWVQFDAXLFQFFD
     # 邮件编码
     default-encoding: UTF-8
-    
+
+
+logging:
+  level:
+    root: info

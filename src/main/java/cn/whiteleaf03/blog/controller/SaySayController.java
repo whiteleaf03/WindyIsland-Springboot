@@ -5,13 +5,11 @@ import cn.whiteleaf03.blog.repository.SaySayRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(value = "/saysay")
+@RequestMapping(value = "/api/saysay")
 public class SaySayController {
     @Autowired
     private SaySayRepository saySayRepository;
